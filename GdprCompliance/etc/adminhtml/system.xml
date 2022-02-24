@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="Zealousweb_extensions" translate="label" sortOrder="110">
+			<label>Zealousweb Extensions</label>
+		</tab>
+		<section id="gdpr" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>GDPR</label>
+			<tab>Zealousweb_extensions</tab>
+			<resource>Zealousweb_GdprCompliance::config_gdpr</resource>
+
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="delete" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Delete Account</label>
+				<field id="allowdelete" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Allow Delete Cutomer Account</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="deletemessage" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Content before Delete account option</label>
+					<depends>
+						<field id="gdpr/delete/allowdelete">1</field>
+					</depends>
+				</field>
+				<field id="delete_email_template" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Delete Account Email Template</label>
+					<source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+					<depends>
+						<field id="gdpr/delete/allowdelete">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="terms" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Terms and Conditions</label>
+				<field id="forms" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show Terms checkbox in</label>
+					<source_model>Zealousweb\GdprCompliance\Model\Source\Forms</source_model>
+				</field>
+				<field id="termslabel" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Terms and Conditions Label</label>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

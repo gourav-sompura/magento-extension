@@ -1,0 +1,37 @@
+<?php $_helper = $this->helper('Zealousweb\GdprCompliance\Helper\Data'); ?>
+<?php if ($_helper->canCustomerDeleteAccount()) : ?>
+    <div class="delete-account-confirmation">
+        <?php echo __("We are processing your account delete request. Please wait...") ?>
+    </div>
+<?php endif; ?>
+
+<?php $id = $block->getRequest()->getParam('id'); ?>
+<?php $token = $block->getRequest()->getParam('token'); ?>
+
+<script type="text/javascript">
+    require(['jquery', 'mage/url','Magento_Customer/js/customer-data'], function($,url,customerData){ 
+        
+        var returnUrl = "<?php echo $block->getUrl('customer/account/login'); ?>";
+        var ajaxUrl = "<?php echo $block->getUrl('gdpr/account/deleteconfirm'); ?>";
+
+        $.ajax({
+            url: ajaxUrl,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: '<?php echo $id; ?>',
+                auth_token: '<?php echo $token; ?>',
+            },
+            success: function(response) {
+                customerData.reload(['customer']);
+                customerData.reload(['cart']);
+                window.location.replace(returnUrl);  
+            },
+            error: function (xhr, status, errorThrown) {
+                customerData.reload(['customer']);
+                customerData.reload(['cart']);
+                window.location.replace(returnUrl);  
+            }
+        });
+    });
+</script>
