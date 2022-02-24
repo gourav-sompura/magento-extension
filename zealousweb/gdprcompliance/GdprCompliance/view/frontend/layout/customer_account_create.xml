@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="form.additional.info">
+			<block class="Zealousweb\GdprCompliance\Block\Terms" name="gdpr.checkbox" template="Zealousweb_GdprCompliance::form/checkbox.phtml" after='-'>
+				<action method="setFormId">
+					<argument name="formId" xsi:type="string">user_create</argument>
+				</action>
+			</block>
+		</referenceBlock>
+	</body>
+</page>

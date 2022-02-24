@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<head>
+		<css src="Zealousweb_GdprCompliance::css/styles.css" />
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Magento\Framework\View\Element\Template" ifconfig="gdpr/general/active" name="gdpr.delete.customer" template="Zealousweb_GdprCompliance::form/delete.phtml" cacheable="false">
+				<block class="Zealousweb\GdprCompliance\Block\Terms" name="form.additional.info.delete" template="Zealousweb_GdprCompliance::form/checkbox.phtml" after='-'>
+					<action method="setFormId">
+						<argument name="formId" xsi:type="string">user_delete</argument>
+					</action>
+				</block>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="form.additional.info">
+			<container name="container.user.edit" htmlTag="div" htmlClass="gdrp-container-user-edit fieldset" after="-">
+				<block class="Zealousweb\GdprCompliance\Block\Terms" name="gdpr.checkbox" template="Zealousweb_GdprCompliance::form/checkbox.phtml" after='-'>
+					<action method="setFormId">
+						<argument name="formId" xsi:type="string">user_edit</argument>
+					</action>
+				</block>
+			</container>
+		</referenceContainer>
+	</body>
+</page>

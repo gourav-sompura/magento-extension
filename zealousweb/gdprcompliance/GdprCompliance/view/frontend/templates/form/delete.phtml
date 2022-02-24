@@ -1,0 +1,27 @@
+<?php $_helper = $this->helper('Zealousweb\GdprCompliance\Helper\Data'); ?>
+<?php if ($_helper->canCustomerDeleteAccount()) : ?>
+    <form class="delete form-delete-account"
+          action="<?php /* @escapeNotVerified */ echo $block->getUrl('gdpr/account/delete') ?>"
+          method="post" data-mage-init='{"validation":{}}'>
+        <fieldset class="fieldset info account-delete">
+
+            <div class="field">
+                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Delete Account'); ?></span></legend>
+                <div class="delete-message">
+                    <?php /* @escapeNotVerified */ echo $_helper->getDeleteMessage(); ?>
+                </div>
+            </div>
+            
+            <?php /* @escapeNotVerified */ echo $block->getChildHtml('form.additional.info.delete') ?>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button 
+                    type="submit"
+                    class="action delete primary"
+                    title="Save">
+                    <span><?php /* @escapeNotVerified */ echo __('Delete Account') ?></span></button>
+            </div>
+        </div>
+    </form>
+<?php endif; ?>

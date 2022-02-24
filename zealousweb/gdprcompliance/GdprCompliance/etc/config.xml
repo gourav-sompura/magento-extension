@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<gdpr>
+			<general>
+				<active>1</active>
+			</general>
+			<delete>
+				<allowdelete>1</allowdelete>
+				<deletemessage>You will receive email with a link to delete your account.</deletemessage>
+				<delete_email_template>gdpr_delete_delete_email_template</delete_email_template>
+				<delete_with_customer>sales_quote,pending_order</delete_with_customer>
+			</delete>
+			<terms>
+				<forms>contact_us</forms>
+				<termslabel>I have read all the terms and conditions.</termslabel>
+			</terms>
+		</gdpr>
+	</default>
+</config>
